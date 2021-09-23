@@ -10,8 +10,8 @@ files:
       length: 28
       offset: 1992
     initialized_from_dependency: false
-    selected: false
-    status: Unchecked
+    selected: true
+    status: Failed
     encrypted_possible_answer: |-
       if not isinstance(index, int):
                   raise TypeError()
@@ -26,7 +26,7 @@ files:
       offset: 2030
     initialized_from_dependency: false
     selected: false
-    status: Unchecked
+    status: Failed
     encrypted_possible_answer: |-
       if index == 0:
                   self.head = self.head.next
@@ -182,5 +182,17 @@ files:
             self.is_valid(next_)
             self.next = next_
   learner_created: false
-status: Unchecked
+status: Failed
+feedback:
+  message: Incorrect
+  time: Thu, 23 Sep 2021 16:00:05 UTC
+  expected: |
+    [1, 2, 3]
+    2
+    100
+  actual: |
+    [1, 2, 3]
+    [1, 2, 3]
+    [1, 2, 3]
+    [1, 2, 3]
 record: -1

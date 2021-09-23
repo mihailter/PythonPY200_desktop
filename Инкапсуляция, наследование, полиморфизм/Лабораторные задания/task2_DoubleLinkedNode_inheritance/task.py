@@ -19,8 +19,9 @@ class Node:
     def __str__(self) -> str:
         return str(self.value)
 
-    def is_valid(self, node: Any) -> None:
-        if not isinstance(node, (type(None), Node)):
+    @classmethod
+    def is_valid(cls, node: Any) -> None:
+        if not isinstance(node, (type(None), cls)):
             raise TypeError
 
     @property
@@ -32,4 +33,15 @@ class Node:
         self.is_valid(next_)
         self._next = next_
 
-# TODO реализовать класс DoubleLinkedNode
+class DoubleLinkedNode(Node):
+    def __init__(self, value: Any, next_: Optional["Node"] = None):
+        super().__init__(value, next_) # синим цветом
+        self.prev = prev # красным цветом
+
+    def __repr__(self):
+        .....
+
+
+
+
+

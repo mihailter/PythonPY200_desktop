@@ -11,9 +11,9 @@ files:
       offset: 1025
     initialized_from_dependency: false
     selected: false
-    status: Unchecked
+    status: Solved
     encrypted_possible_answer: left_node.set_next(right_node)
-  - offset: 1090
+  - offset: 1274
     length: 76
     placeholder_text: '...  # TODO самостоятельно проверьте работоспособность  функции
       linked_nodes'
@@ -22,7 +22,7 @@ files:
       offset: 1090
     initialized_from_dependency: false
     selected: false
-    status: Unchecked
+    status: Solved
     encrypted_possible_answer: '...'
   text: |
     from typing import Any, Optional
@@ -92,5 +92,8 @@ files:
 - name: tests/__init__.py
   visible: false
   learner_created: false
-status: Unchecked
+status: Solved
+feedback:
+  message: Congratulations!
+  time: Thu, 23 Sep 2021 15:38:52 UTC
 record: -1

@@ -5,7 +5,7 @@ from node import Node
 
 class LinkedList:
     def __init__(self, data: Iterable = None):
-        """Конструктор связного списка"""
+        """Конструктор связанного списка"""
         self.len = 0
         self.head: Optional[Node] = None
         self.tail = self.head
@@ -70,7 +70,13 @@ class LinkedList:
         return f"{self.to_list()}"
 
     def __add__(self, other: "LinkedList") -> "LinkedList":
-        ...  # TODO реализовать конкатенацию последовательностей
+        if not isinstance(other, LinkedList):
+            raise TypeError
+
+        for other_value in other:
+            self.append(other_value)
+
+        return self
 
 
 if __name__ == "__main__":

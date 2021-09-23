@@ -4,7 +4,7 @@ from functools import total_ordering
 from node import Node
 
 
-# TODO задекорировать класс
+@total_ordering # TODO задекорировать класс
 class LinkedList:
     def __init__(self, data: Iterable = None):
         """Конструктор связного списка"""
@@ -84,6 +84,21 @@ class LinkedList:
         for item_self, item_other in zip(self, other):
             if item_self != item_other:
                 return False
+
+        return True
+
+    def __lt__(self, other: "LinkedList") -> bool:
+        if not isinstance(other, LinkedList):
+            raise TypeError
+
+        if len(self) > len(other):
+            return False
+        elif len(self) < len(other):
+            return True
+        else:
+            for item_self, item_other in zip(self, other):
+                if item_self >= item_other:
+                    return False
 
         return True
 

@@ -3,7 +3,7 @@ files:
 - name: task.py
   visible: true
   placeholders:
-  - offset: 399
+  - offset: 452
     length: 68
     placeholder_text: '# TODO установить значение следующего узла с помощью метода
       set_next'
@@ -12,11 +12,11 @@ files:
       offset: 399
     initialized_from_dependency: false
     selected: false
-    status: Unchecked
+    status: Solved
     encrypted_possible_answer: |-
       self.next = None
               self.set_next(next_)
-  - offset: 602
+  - offset: 744
     length: 64
     placeholder_text: |-
       # TODO метод проверки корректности связываемого узла
@@ -25,12 +25,12 @@ files:
       length: 64
       offset: 602
     initialized_from_dependency: false
-    selected: false
-    status: Unchecked
+    selected: true
+    status: Solved
     encrypted_possible_answer: |-
       if not isinstance(node, (type(None), Node)):
                   raise TypeError
-  - offset: 740
+  - offset: 936
     length: 98
     placeholder_text: |-
       # TODO метод должен проверять корректность узла и устанавливать значение атрибуту next
@@ -40,11 +40,11 @@ files:
       offset: 740
     initialized_from_dependency: false
     selected: false
-    status: Unchecked
+    status: Solved
     encrypted_possible_answer: |-
       self.is_valid(next_)
               self.next = next_
-  - offset: 872
+  - offset: 1216
     length: 14
     placeholder_text: |-
       # TODO
@@ -54,7 +54,7 @@ files:
       offset: 872
     initialized_from_dependency: false
     selected: false
-    status: Unchecked
+    status: Solved
     encrypted_possible_answer: |-
       first_node = Node("first_node")
           second_node = Node("second_node")
@@ -127,5 +127,8 @@ files:
 - name: tests/__init__.py
   visible: false
   learner_created: false
-status: Unchecked
+status: Solved
+feedback:
+  message: Congratulations!
+  time: Thu, 23 Sep 2021 15:31:02 UTC
 record: -1
