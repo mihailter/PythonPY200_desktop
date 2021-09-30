@@ -33,6 +33,7 @@ class Node:
         self._next = next_
 
 class DoubleLinkedNode(Node):
+
     def __init__(self, value: Any, next_: Optional["Node"] = None):
         super().__init__(value, next_) # синим цветом
         self.prev = prev # красным цветом

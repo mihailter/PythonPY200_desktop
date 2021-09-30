@@ -4,7 +4,7 @@ files:
   visible: true
   placeholders:
   - offset: 948
-    length: 281
+    length: 282
     placeholder_text: '# TODO реализовать класс DoubleLinkedNode'
     initial_state:
       length: 41
