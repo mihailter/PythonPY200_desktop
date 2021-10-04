@@ -3,8 +3,8 @@ files:
 - name: main.py
   visible: true
   placeholders:
-  - offset: 1992
-    length: 28
+  - offset: 2543
+    length: 0
     placeholder_text: '...  # TODO проверка индекса'
     initial_state:
       length: 28
@@ -18,14 +18,14 @@ files:
 
               if not 0 <= index < self.len:  # для for
                   raise IndexError()
-  - offset: 2030
-    length: 29
+  - offset: 2543
+    length: 0
     placeholder_text: '...  # TODO алгоритм удаления'
     initial_state:
       length: 29
       offset: 2030
     initialized_from_dependency: false
-    selected: false
+    selected: true
     status: Failed
     encrypted_possible_answer: |-
       if index == 0:
@@ -185,14 +185,14 @@ files:
 status: Failed
 feedback:
   message: Incorrect
-  time: Thu, 23 Sep 2021 16:00:05 UTC
+  time: Fri, 01 Oct 2021 17:47:10 UTC
   expected: |
     [1, 2, 3]
     2
     100
   actual: |
     [1, 2, 3]
-    [1, 2, 3]
-    [1, 2, 3]
-    [1, 2, 3]
+    [1, 3]
+    [1]
+    []
 record: -1

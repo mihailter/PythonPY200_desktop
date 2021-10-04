@@ -24,5 +24,8 @@ files:
         glass = Glass(200, 0)
         print(dir(glass))
   learner_created: false
-status: Unchecked
+status: Failed
+feedback:
+  message: Incorrect solution
+  time: Fri, 01 Oct 2021 17:42:24 UTC
 record: -1

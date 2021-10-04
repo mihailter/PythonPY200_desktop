@@ -3,7 +3,7 @@ files:
 - name: main.py
   visible: true
   placeholders:
-  - offset: 1992
+  - offset: 2555
     length: 28
     placeholder_text: '...  # TODO проверка индекса'
     initial_state:
@@ -11,14 +11,14 @@ files:
       offset: 1992
     initialized_from_dependency: false
     selected: false
-    status: Unchecked
+    status: Solved
     encrypted_possible_answer: |-
       if not isinstance(index, int):
                   raise TypeError()
 
               if not 0 <= index < self.len:  # для for
                   raise IndexError()
-  - offset: 2030
+  - offset: 2593
     length: 29
     placeholder_text: '...  # TODO алгоритм удаления'
     initial_state:
@@ -26,7 +26,7 @@ files:
       offset: 2030
     initialized_from_dependency: false
     selected: false
-    status: Unchecked
+    status: Solved
     encrypted_possible_answer: |-
       if index == 0:
                   self.head = self.head.next
@@ -41,7 +41,7 @@ files:
                   self.linked_nodes(prev_node, next_node)
 
               self.len -= 1
-  - offset: 2347
+  - offset: 3022
     length: 78
     placeholder_text: '...  # TODO поэксперементируйте, как с помощью функции del
       очистить LinkedList'
@@ -50,7 +50,7 @@ files:
       offset: 2347
     initialized_from_dependency: false
     selected: false
-    status: Unchecked
+    status: Solved
     encrypted_possible_answer: |-
       for i in range(self.len, 0):
                   del self[i-1]
@@ -196,5 +196,8 @@ files:
             self.is_valid(next_)
             self.next = next_
   learner_created: false
-status: Unchecked
+status: Solved
+feedback:
+  message: Congratulations!
+  time: Fri, 01 Oct 2021 15:00:26 UTC
 record: -1
