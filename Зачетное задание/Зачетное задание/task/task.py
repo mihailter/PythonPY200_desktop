@@ -1,6 +1,6 @@
 from collections.abc import MutableSequence
 
-from  typing import Optional, Any
+from  typing import Optional, Any, Iterator
 from  node import Node
 # collections.abc- Абстрактные базовые классы для контейнеров
 # MutableSequence абстрактный класс для реализации __getitem__,
@@ -54,17 +54,19 @@ class LinkedList(MutableSequence):
         """
         left_node.next = right_node
 
+    # реализация функции __getitem__
     def __getitem__(self, index: int) -> Any:
         """ Метод возвращает значение узла по указанному индексу. """
         node = self.step_by_step_on_nodes(index)
         return node.value
 
+    # реализация функции __setitem__
     def __setitem__(self, index: int, value: Any) -> None:
         """ Метод устанавливает значение узла по указанному индексу. """
         node = self.step_by_step_on_nodes(index)
         node.value = value
 
-        # реализация функции deliitem, удаление элемента
+    # реализация функции __delitem__, удаление элемента
     def __delitem__(self, index: int):
         if not isinstance(index, int):
             raise TypeError()
@@ -85,13 +87,6 @@ class LinkedList(MutableSequence):
             self.linked_nodes(prev_node, next_node)
 
         self.len -= 1
-
-    def clear(self):
-        for i in range(self.len, 0):
-            del self[i-1]
-
-        self.head = None
-        self.len = 0
 
     def to_list(self) -> list:
         return [linked_list_value for linked_list_value in self]
@@ -130,23 +125,34 @@ class LinkedList(MutableSequence):
 
             self.len += 1
 
+    def count(self, data):
+        start = self.head
+        count1 = 0
+        while start:
+            if start.getData() == data:
+                count1 += 1
+            start = start.getNextNode()
+        return count1
+
 if __name__ == "__main__":
-    list_ = [1, 2, 3]
+  #  list_ = [1, 2, 3]
 
-    ll = LinkedList(list_)
-    print(ll)
-
-    ll.append(100)
-    print(ll)
-
-
-
+  #  ll = LinkedList(list_)
+  #  print(ll.head)
+   # print(ll.tail)
 
 
 #class DoubleLinkedList(LinkedList):
- #   def __init__(self, value: Any, next_: Optional["LinkedList"] = None):
-   #     super().__init__(value, next_)  # вызвать конструктор базового класса
-   #     pass
+#    def __init__(self, data = None):
+      #  super().__init__(data)  # вызвать конструктор базового класса
 
-    # Дополнительное задание, раелизация функции count
+# count метод возвращает количество элементов с указанным значением.
+# list.count(value)
+# fruits = ["apple", "banana", "cherry"]
+# x = fruits.count("banana")
+# print(x)
 
+#class LinkedList:
+    # метод возвращает количество полученных элементов
+ #   def __init__(self):
+#        self.head = None
