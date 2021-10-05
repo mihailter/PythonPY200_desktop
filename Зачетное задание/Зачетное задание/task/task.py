@@ -1,7 +1,7 @@
 from collections.abc import MutableSequence
 
 from  typing import Optional, Any, Iterator
-from  node import Node
+from  node import Node, DoubleLinkedNode
 # collections.abc- Абстрактные базовые классы для контейнеров
 # MutableSequence абстрактный класс для реализации __getitem__,
 # __setitem__, __delitem__, __len__, insert
@@ -97,6 +97,9 @@ class LinkedList(MutableSequence):
     def __str__(self) -> str:
         return f"{self.to_list()}"
 
+    def __len__(self):
+        return self.len
+
     def nodes_iterator(self) -> Iterator[Node]:
         current_node = self.head
         for _ in range(self.len):
@@ -125,34 +128,58 @@ class LinkedList(MutableSequence):
 
             self.len += 1
 
+    # count метод возвращает количество элементов с указанным значением.
     def count(self, data):
-        start = self.head
-        count1 = 0
-        while start:
-            if start.getData() == data:
-                count1 += 1
-            start = start.getNextNode()
+        count1 = 0 # список
+        for name in self: # перемещаемся по списку
+            if name == data:
+                count1 += 1 # если нвходим значение добавляем
         return count1
 
+class DoubleLinkedList(LinkedList):
+    def __init__(self, data = None):
+        """Конструктор двусвязного списка"""
+        super().__init__(data) # вызваем конструктор базового класса
+
+    # перезагружаем метод append для DoubleLinkedList
+    def append(self, value: Any):
+        """ Добавление элемента в конец связного списка. """
+        append_node = DoubleLinkedNode(value) # для DoubleLinkedNode
+
+        if self.head is None:
+            self.head = self.tail = append_node
+        else:
+            self.linked_nodes(self.tail, append_node)
+            self.tail = append_node # перемещаем хвост
+
+        self.len += 1 # добавляем в хвост
+
+    # def step_by_step_on_nodes(self, index: int) -> Node: наследуем без перезагрузки
+
+    # перезагружаем метод linked_nodes для DoubleLinkedList
+    def linked_nodes(self, left_node: DoubleLinkedNode, right_node: Optional[DoubleLinkedNode] = None) -> None:
+        left_node.next = right_node
+        right_node.prev = left_node
+
+    # def __getitem__(self, index: int) -> Any: наследуем без перезагрузки
+    # def __setitem__(self, index: int, value: Any) -> None: наследуем без перезагрузки
+    # def __delitem__(self, index: int): наследуем без перезагрузки
+    # def to_list(self) -> list: наследуем без перезагрузки
+    # def __repr__(self) -> str: наследуем без перезагрузки
+    # def __str__(self) -> str: наследуем без перезагрузки
+    # def __len__(self): наследуем без перезагрузки
+    # def nodes_iterator(self) -> Iterator[Node]: наследуем без перезагрузки
+    # def insert(self, index: int, value: Any) -> None: наследуем без перезагрузки
+
 if __name__ == "__main__":
-  #  list_ = [1, 2, 3]
+    list_ = [1, 2, 3, 2]
 
-  #  ll = LinkedList(list_)
-  #  print(ll.head)
-   # print(ll.tail)
+    ll = LinkedList(list_)
+    print(ll)
+    # print(ll.head)
+    # print(ll.tail)
 
+    ll = DoubleLinkedList(list_)
+    print(ll)
 
-#class DoubleLinkedList(LinkedList):
-#    def __init__(self, data = None):
-      #  super().__init__(data)  # вызвать конструктор базового класса
-
-# count метод возвращает количество элементов с указанным значением.
-# list.count(value)
-# fruits = ["apple", "banana", "cherry"]
-# x = fruits.count("banana")
-# print(x)
-
-#class LinkedList:
-    # метод возвращает количество полученных элементов
- #   def __init__(self):
-#        self.head = None
+    print(ll.count(2))
