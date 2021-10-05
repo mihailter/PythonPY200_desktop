@@ -231,7 +231,7 @@ files:
 status: Failed
 feedback:
   message: Incorrect
-  time: Thu, 30 Sep 2021 17:01:05 UTC
+  time: Tue, 05 Oct 2021 07:16:38 UTC
   expected: |-
     Вызван метод "__del__"
     Вызван метод "__del__"
