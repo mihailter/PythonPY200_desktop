@@ -7,6 +7,7 @@ from  node import Node, DoubleLinkedNode
 # __setitem__, __delitem__, __len__, insert
 
 class LinkedList(MutableSequence):
+
     def __init__(self, data = None):
         """Конструктор связного списка"""
         self.len = 0 #создаем список
@@ -109,43 +110,28 @@ class LinkedList(MutableSequence):
    # реализация метода __insert__
     def insert(self, index: int, value: Any) -> None:
         if not isinstance(index, int):
-            raise TypeError()
+            raise TypeError
 
         insert_node = Node(value)
-
+        # Вставка индекса в список с головы
         if index == 0:
             insert_node.next = self.head
             self.head = insert_node
             self.len += 1
-        elif index >= self.len - 1:
+        # Вставка (добавление) элемента в конец списка если индекс и элемент
+        # больше или равен списку
+        elif index >= self.len:
             self.append(value)
-        else:
-            prev_node = self.step_by_step_on_nodes(index - 1)
+
+        elif 0 < index < self.len:
+            prev_index = index - 1
+            prev_node = self.step_by_step_on_nodes(prev_index)
             next_node = prev_node.next
 
             self.linked_nodes(prev_node, insert_node)
             self.linked_nodes(insert_node, next_node)
 
             self.len += 1
-   #  def insert(self, index: int, value) -> None:
-   #      """Метод для вставки значение по индексу"""
-   #      if not isinstance(index, int):
-   #          raise TypeError
-   #
-   #      insert_node = Node(value)
-   #      if index == 0: # если индекс = 0
-   #          insert_node.next = self.head
-   #          self.head = insert_node
-   #          self.len += 1
-   #      elif index >= self.len:
-   #          self.append(value)
-   #      elif 0 < index < self.len:
-   #          prev_index = index - 1
-   #          prev_node = self.step_by_step_on_nodes(prev_index)
-   #          next_node = prev_node.next
-   #          self.linked_nodes(prev_node, insert_node)
-   #          self.linked_nodes(insert_node, next_node)
-   #          self.len += 1
 
     # count метод возвращает количество элементов с указанным значением.
     def count(self, data):
@@ -157,7 +143,7 @@ class LinkedList(MutableSequence):
 
 class DoubleLinkedList(LinkedList):
     def __init__(self, data = None):
-        """Конструктор двусвязного списка"""
+        # Конструктор двусвязного списка
         super().__init__(data) # вызваем конструктор базового класса
 
     # перезагружаем метод append для DoubleLinkedList
@@ -188,42 +174,33 @@ class DoubleLinkedList(LinkedList):
     # def __str__(self) -> str: наследуем без перезагрузки
     # def __len__(self): наследуем без перезагрузки
     # def nodes_iterator(self) -> Iterator[Node]: наследуем без перезагрузки
-    # перезагрузка метода __insert__
-def test_double_linked_list():
-    list_ = []
-    ll = LinkedList(list_)
-    print(ll)
-    ll.append(1)
-    ll.append("str")
-    ll.append([1.1, 1.2])
-    print(ll)
-    print(ll.head)
-    print(ll.tail)
-    ll.insert(0, 5)
-    print(ll)
-    ll.insert(2, 7)
-    print(ll)
-    ll.insert(4, 10)
-    print(ll)
+    # def insert(self, index: int, value: Any) -> None: наследуем без перезагрузки
 
 if __name__ == "__main__":
+
     list_ = [1, 2, 3, 4, 2]
 
     ll = LinkedList(list_)
     print(ll)
-    # print(ll.head)
-    # print(ll.tail)
-
-    ll = DoubleLinkedList(list_)
-    print(ll)
-
-    print(ll.count(2))
 
     ll.insert(0, 3)
     print(ll)
     ll.insert(1, 4)
     print(ll)
-    ll.insert(2, 5)
+    ll.insert(11, 11)
     print(ll)
 
-    test_double_linked_list()
+
+    print(ll.count(2))
+
+    ll = DoubleLinkedList(list_)
+    print(ll)
+
+    ll.insert(0, 3)
+    print(ll)
+    ll.insert(1, 4)
+    print(ll)
+    ll.insert(11, 11)
+    print(ll)
+
+
